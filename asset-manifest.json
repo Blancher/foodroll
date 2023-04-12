@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/foodroll/static/css/main.b450df02.css",
+    "main.css": "/foodroll/static/css/main.5df590d8.css",
     "main.js": "/foodroll/static/js/main.bda80b79.js",
     "static/js/787.b3cca377.chunk.js": "/foodroll/static/js/787.b3cca377.chunk.js",
     "index.html": "/foodroll/index.html",
-    "main.b450df02.css.map": "/foodroll/static/css/main.b450df02.css.map",
+    "main.5df590d8.css.map": "/foodroll/static/css/main.5df590d8.css.map",
     "main.bda80b79.js.map": "/foodroll/static/js/main.bda80b79.js.map",
     "787.b3cca377.chunk.js.map": "/foodroll/static/js/787.b3cca377.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b450df02.css",
+    "static/css/main.5df590d8.css",
     "static/js/main.bda80b79.js"
   ]
 }
