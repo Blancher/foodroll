@@ -32,6 +32,11 @@ export default function App() {
     hours = addZeroes(hours);
     setDisplayedTimer(`${hours}:${minutes}:${seconds}:${ms}`);
   };
+  const resetNums = () => {
+    for (let i = 0; i < 10; i++) {
+      setNums(prev => [...prev, Math.floor(Math.random() * 6)]);
+    }
+  };
   useEffect(() => {
     if (running) {
       timer = setInterval(timerFunction, 10);
@@ -40,11 +45,7 @@ export default function App() {
       clearInterval(timer);
     };
   }, [running]);
-  useEffect(() => {
-    for (let i = 0; i < 10; i++) {
-      setNums(prev => [...prev, Math.ceil(Math.random() * 6)]);
-    }
-  }, []);
+  useEffect(() => resetNums(), []);
   useEffect(() => {
     if (bools.every(bool => bool === bools[0]) && nums.every(val => val === nums[0])) {
       setRunning(false);
@@ -61,16 +62,10 @@ export default function App() {
     setNums([]);
     if (bools.every(bool => bool === bools[0]) && nums.every(val => val === nums[0])) {
       setBools([false, false, false, false, false, false, false, false, false, false]);
-      for (let i = 0; i < 10; i++) {
-        setNums(prev => [...prev, Math.ceil(Math.random() * 6)]);
-      }
+      resetNums();
     } else {
       for (let i = 0; i < 10; i++) {
-        if (bools[i]) {
-          setNums(prev => [...prev, oldNums[i]]);
-        } else {
-          setNums(prev => [...prev, Math.ceil(Math.random() * 6)]);
-        }
+        setNums(prev => [...prev, bools[i] ? oldNums[i] : Math.floor(Math.random() * 6)]);
       }
     }
   };
