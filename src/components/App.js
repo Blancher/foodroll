@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import Die from './Die';
 
 export default function App() {
@@ -6,6 +6,7 @@ export default function App() {
   const [bools, setBools] = useState([false, false, false, false, false, false, false, false, false, false]);
   const [running, setRunning] = useState(true);
   const [displayedTimer, setDisplayedTimer] = useState('00:00:00:00');
+  const audioRef = useRef();
   let ms = 0;
   let seconds = 0;
   let minutes = 0;
@@ -49,7 +50,7 @@ export default function App() {
   useEffect(() => {
     if (bools.every(bool => bool === bools[0]) && nums.every(val => val === nums[0])) {
       setRunning(false);
-      document.querySelector('audio').play();
+      audioRef.current.play();
       if ((!localStorage.getItem('storedTime') || +displayedTimer.split(':').join('') < +localStorage.getItem('storedTime').split(':').join('')) && displayedTimer !== '00:00:00:00') {
         localStorage.setItem('storedTime', displayedTimer);
       }
@@ -73,6 +74,7 @@ export default function App() {
   return (
     <div>
       <main>
+        <audio src="androidsound.mp3" ref={audioRef}></audio>
         <div id='absolute'>
           <p className='displayed-timer'>Game Length: {displayedTimer}</p>
           {localStorage.getItem('storedTime') && <p className='displayed-timer'>Fastest Time: {localStorage.getItem('storedTime')}</p>}
